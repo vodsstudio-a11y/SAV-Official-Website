@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAV - Official Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#0a0814;color:#c9b8ff;border-left:5px solid #a855f7;border-right:5px solid #a855f7;min-height:100vh}
+.top{display:flex;justify-content:space-between;background:#0d0a1f;color:#6d6490;padding:8px 12px;font-size:10px;border-bottom:1px solid #2a2150;align-items:center}
+.top button{background:#8b5cf6;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-size:10px;font-weight:700;cursor:pointer;box-shadow:0 0 10px #8b5cf6}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#0d0a1f;border-bottom:2px solid #7c3aed;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:10px}
+.seal{width:42px;height:42px;border-radius:50%;border:2px solid #d4af37;display:grid;place-items:center;background:#1a1340;overflow:hidden;box-shadow:0 0 12px #7c3aed}
+.seal img{width:100%;height:100%;object-fit:cover}
+.brand h1{font-family:Cinzel,serif;font-size:15px;color:#fff}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#9a8ac2;text-decoration:none;font-size:10px;padding:5px 10px;border-radius:16px;border:1px solid #2a2150;cursor:pointer;display:flex;align-items:center;gap:4px}
+nav a.active{background:#8b5cf6;color:#fff}
+.notice{display:flex;gap:10px;background:#121026;padding:10px 12px;border-bottom:1px solid #2a2150;align-items:center}
+.notice b{background:#8b5cf6;color:#fff;padding:5px 10px;border-radius:4px;font-size:11px}
+.section{display:none}.section.active{display:block;animation:glitchIn.4s ease}
+.page{padding:22px 12px;max-width:900px;margin:0 auto}
+.card{background:#15122a;padding:16px;border-radius:12px;border:1px solid #2a2150;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#8b5cf6}
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-logo{width:42px;height:42px;border-radius:50%;border:2px solid #d4af37;overflow:hidden;background:#1a1340}
+.card-logo img{width:100%;height:100%;object-fit:cover}
+.card-head h3{font-family:Cinzel,serif;color:#fff;font-size:16px}
+.login-box{max-width:380px;margin:40px auto;background:#15122a;padding:24px;border-radius:12px;border:2px solid #7c3aed;box-shadow:0 0 20px #7c3aed}
+.login-box h2{font-family:Cinzel,serif;color:#fff;text-align:center;margin-bottom:15px}
+.login-box input,.login-box select{width:100%;padding:10px;background:#0a0814;border:1px solid #2a2150;border-radius:6px;color:#fff;margin-bottom:10px}
+.login-box button{width:100%;padding:10px;background:#8b5cf6;color:#fff;border:none;border-radius:6px;font-weight:700;cursor:pointer}
+.admin-panel{background:#15122a;border:2px dashed #ff0040;padding:12px;border-radius:12px;margin-bottom:15px;display:none}
+body.admin .admin-panel{display:block!important}
+body.rep .admin-panel{display:block!important}
+.slot-row{background:#0a0814;padding:14px;border-radius:10px;border:1px solid #2a2150;margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.slot-badge{padding:5px 10px;border-radius:6px;font-size:10px;font-weight:700;color:#fff;min-width:60px;text-align:center}
+.reg-input{flex:1;min-width:160px;padding:10px;background:#15122a;border:1px solid #a855f7;border-radius:8px;color:#fff;font-size:12px}
+.glitch{position:relative;font-family:Cinzel,serif;font-size:46px;color:#fff;line-height:1.1;animation:glitch-skew 1s infinite linear alternate-reverse}
+.glitch span{color:#8b5cf6;display:block;text-shadow:0 0 25px #8b5cf6}
+.glitch::before{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;left:-2px;text-shadow:2px 0 #ff00ff;clip:rect(24px,550px,90px,0);animation:glitch-anim 2s infinite linear alternate-reverse}
+.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;left:2px;text-shadow:-2px 0 #00ffff;clip:rect(85px,550px,140px,0);animation:glitch-anim2 2s infinite linear alternate-reverse}
+@keyframes glitch-anim{0%{clip:rect(24px,550px,90px,0)}20%{clip:rect(85px,550px,140px,0)}40%{clip:rect(66px,550px,115px,0)}60%{clip:rect(40px,550px,73px,0)}80%{clip:rect(19px,550px,50px,0)}100%{clip:rect(85px,550px,140px,0)}}
+@keyframes glitch-anim2{0%{clip:rect(66px,550px,115px,0)}20%{clip:rect(40px,550px,73px,0)}40%{clip:rect(19px,550px,50px,0)}60%{clip:rect(85px,550px,140px,0)}80%{clip:rect(66px,550px,115px,0)}100%{clip:rect(40px,550px,73px,0)}}
+@keyframes glitch-skew{0%{transform:skew(0deg)}20%{transform:skew(1deg)}30%{transform:skew(-1deg)}50%{transform:skew(.5deg)}70%{transform:skew(-.5deg)}100%{transform:skew(0deg)}}
+@keyframes glitchIn{0%{opacity:0;transform:translateX(-10px);filter:hue-rotate(90deg)}20%{opacity:1;transform:translateX(10px)}40%{transform:translateX(-5px)}60%{transform:translateX(5px)}80%{transform:translateX(-2px)}100%{opacity:1;transform:translateX(0)}}
+.hero{text-align:center;padding:35px 15px;background:radial-gradient(ellipse at top,#1e1350 0%,#0a0814 65%);animation:glitchIn.6s ease}
+.hero-logo{width:110px;height:110px;margin:0 auto 15px;border-radius:50%;border:3px solid #d4af37;overflow:hidden;box-shadow:0 0 25px #7c3aed;background:#000;animation:glitch-skew 2s infinite}
+</style>
+</head>
+<body>
+<div class="top"><div>STRIKE AND VICTORY</div><div><button id="adminBtn" onclick="handleTopBtn()">🔐 LOGIN</button></div></div>
+<header>
+<div class="brand"><div class="seal"><img src="logo2.jpg" onerror="this.style.display='none'"></div><div><h1>STRIKE & VICTORY</h1></div></div>
+<nav>
+<a onclick="playClick();showPage('home')" id="nav-home" class="active"><span class="ico">🏠</span> Home</a>
+<a onclick="playClick();showPage('about')" id="nav-about"><span class="ico">📖</span> About</a>
+<a onclick="playClick();showPage('teams')" id="nav-teams"><span class="ico">👥</span> Teams</a>
+<a onclick="playClick();showPage('scrimmage')" id="nav-scrimmage"><span class="ico">⚔️</span> Scrim</a>
+<a onclick="playClick();showPage('rules')" id="nav-rules"><span class="ico">📋</span> Rules</a>
+<a onclick="playClick();showPage('blacklist')" id="nav-blacklist"><span class="ico">🚫</span> Ban</a>
+</nav>
+</header>
+<div class="notice"><b>NOTICE</b><span id="noticeText">👋 Welcome to the Official Website of SAV - Strike and Victory!</span></div>
+
+<div id="login" class="section"><div class="login-box"><h2>CLAN REP / ADMIN LOGIN</h2><select id="loginType"><option value="rep">CLAN REPRESENTATIVE</option><option value="admin">SAV MANAGEMENT</option></select><input id="adminUser" placeholder="Username"><input id="adminPass" type="password" placeholder="Password"><button onclick="playClick();doLogin()">LOGIN</button><p id="loginMsg" style="font-size:11px;text-align:center;margin-top:10px;color:#ff7a7a"></p></div></div>
+
+<div id="home" class="section active">
+<div class="hero">
+<div class="hero-logo"><img src="logo2.jpg"></div>
+<h1 class="glitch" data-text="STRIKE AND VICTORY">STRIKE AND<br><span>VICTORY</span></h1>
+<p style="color:#c9b8ff;font-size:11px;font-weight:600;letter-spacing:.5px;margin-top:10px;line-height:1.5">
+🔒 Login access is exclusively for clan representatives and SAV admins only.
+</p>
+<div style="display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap">
+<a id="homeLoginBtn" onclick="playClick();handleTopBtn()" style="display:inline-block;background:#fff;color:#0a0814;padding:12px 28px;border-radius:8px;font-weight:900;cursor:pointer;box-shadow:0 0 20px #fff">🔐 LOGIN</a>
+</div>
+</div>
+<div class="page"><div class="card"><div class="card-head"><div class="card-logo"><img src="logo2.jpg"></div><div><h3>HOME BASE</h3><span>OFFICIAL HQ</span></div></div><p style="font-size:12px;color:#9a8ac2">Welcome to SAV - Strike and Victory Official Clan Website</p></div></div>
+</div>
+
+<div id="about" class="section">
+<div class="page">
+<div class="card" style="border:2px solid #d4af37">
+<div class="card-head">
+<div class="card-logo"><img src="logo2.jpg"></div>
+<div><h3>ABOUT SAV</h3><span>STRIKE AND VICTORY - EST. MARCH 10, 2026</span></div>
+</div>
+<div style="background:#0a0814;padding:14px;border-radius:10px;border:1px solid #2a2150;margin-bottom:14px">
+<h4 style="font-family:Cinzel,serif;color:#d4af37;font-size:13px;margin-bottom:8px">⚔️ WHO WE ARE</h4>
+<p style="font-size:12px;color:#c9b8ff;line-height:1.7">
+<b style="color:#fff">STRIKE AND VICTORY (SAV)</b> is a competitive <b style="color:#8b5cf6">Call of Duty: Mobile</b> clan built on <b style="color:#fff">brotherhood, discipline, and victory</b>. We are not just a clan — we are <b style="color:#fff">ONE CLAN ONE FAMILY</b>.
+</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+<div style="background:#0a0814;padding:12px;border-radius:10px;border:1px solid #2a2150">
+<h5 style="color:#8b5cf6;font-size:11px">🎯 OUR IDENTITY</h5>
+<p style="font-size:11px;color:#9a8ac2;margin-top:6px;line-height:1.6">
+- <b style="color:#fff">CODM Clan Brotherhood</b><br>
+- <b style="color:#fff">Scrimmage Clan</b> - Active Daily<br>
+- <b style="color:#fff">Competitive Team</b><br>
+</p>
+</div>
+<div style="background:#0a0814;padding:12px;border-radius:10px;border:1px solid #2a2150">
+<h5 style="color:#ff7a7a;font-size:11px">📅 HISTORY</h5>
+<p style="font-size:11px;color:#9a8ac2;margin-top:6px;line-height:1.6">
+<b style="color:#fff">Founded:</b> March 10, 2026<br>
+<b style="color:#fff">Game:</b> CODM<br>
+<b style="color:#fff">Motto:</b> One Clan One Family
+</p>
+</div>
+</div>
+<div style="background:linear-gradient(135deg,#1a1340,#0a0814);padding:14px;border-radius:10px;border:2px solid #7c3aed">
+<h4 style="font-family:Cinzel,serif;color:#fff;font-size:13px;margin-bottom:12px;text-align:center">👑 CLAN LEADERSHIP</h4>
+<div style="display:grid;grid-template-columns:1fr;gap:8px">
+<div style="background:#15122a;padding:12px;border-radius:8px;border-left:4px solid #d4af37;display:flex;justify-content:space-between;align-items:center"><div><b style="color:#d4af37;font-size:11px">OWNER / CLAN MASTER</b><br><b style="color:#fff;font-size:14px;font-family:Cinzel,serif">MARK JAY PASIGNAHIN</b></div><div style="font-size:22px">👑</div></div>
+<div style="background:#15122a;padding:12px;border-radius:8px;border-left:4px solid #a855f7;display:flex;justify-content:space-between;align-items:center"><div><b style="color:#a855f7;font-size:11px">VICE CLAN MASTER</b><br><b style="color:#fff;font-size:14px;font-family:Cinzel,serif">GHIAN JAMES ALFEROS</b></div><div style="font-size:22px">🛡️</div></div>
+<div style="background:#15122a;padding:12px;border-radius:8px;border-left:4px solid #00ff88;display:flex;justify-content:space-between;align-items:center"><div><b style="color:#00ff88;font-size:11px">CLAN MANAGER</b><br><b style="color:#fff;font-size:14px;font-family:Cinzel,serif">MIKE MANLANGIT</b></div><div style="font-size:22px">⚙️</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="teams" class="section"><div class="page"><div class="card"><div><h3>TEAMS DIVISION</h3></div><p style="font-size:12px;color:#9a8ac2">SAV MAIN, ELT, SEC, AMPON</p></div></div></div>
+<div id="rules" class="section"><div class="page"><div class="card"><div><h3>RULES</h3></div><p style="font-size:12px;color:#9a8ac2">2 slots 8PM, 3 slots 10PM</p></div></div></div>
+
+<!-- BAN LIST - NEW FEATURE ADDED FOR ADMINS ONLY -->
+<div id="blacklist" class="section">
+<div class="page">
+
+<div class="card" style="border:2px solid #ff0040">
+<div class="card-head">
+<div style="width:42px;height:42px;border-radius:50%;border:2px solid #ff0040;display:grid;place-items:center;background:#1a1340">🚫</div>
+<div><h3>BLACKLIST / BANNED</h3><span>OFFICIAL BANNED LIST - ADMIN ONLY MANAGEMENT</span></div>
+</div>
+
+<!-- ADMIN ONLY - ADD BAN FORM -->
+<div id="banAdminForm" style="display:none;background:#0a0814;padding:14px;border-radius:10px;border:2px dashed #ff0040;margin-bottom:14px">
+<h4 style="color:#ff7a7a;font-size:14px;font-weight:800">🔐 ADMIN - ADD BANNED CLAN / PLAYER</h4>
+<p style="font-size:11px;color:#9a8ac2;margin:6px 0">Only admins can add banned clan name and player name. This will be visible to everyone.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+<div><label style="font-size:10px;color:#ff7a7a;font-weight:700">CLAN NAME *</label><input id="banClan" placeholder="Ex: TOXIC CLAN" style="width:100%;padding:11px;background:#15122a;border:1px solid #ff0040;border-radius:8px;color:#fff;margin-top:4px"></div>
+<div><label style="font-size:10px;color:#ff7a7a;font-weight:700">PLAYER NAME *</label><input id="banPlayer" placeholder="Ex: Player123" style="width:100%;padding:11px;background:#15122a;border:1px solid #ff0040;border-radius:8px;color:#fff;margin-top:4px"></div>
+</div>
+
+<div style="margin-top:10px"><label style="font-size:10px;color:#c9b8ff;font-weight:700">REASON FOR BAN</label><input id="banReason" placeholder="Ex: Cheating, Toxic, Hacking, Disrespect" style="width:100%;padding:11px;background:#15122a;border:1px solid #2a2150;border-radius:8px;color:#fff;margin-top:4px"></div>
+
+<button onclick="playClick();addBan()" style="width:100%;margin-top:12px;padding:13px;background:#ff0040;color:#fff;border:none;border-radius:8px;font-weight:800;cursor:pointer;box-shadow:0 0 15px #ff004077">🚫 ADD TO BLACKLIST</button>
+</div>
+
+<!-- PUBLIC LIST -->
+<div style="background:#0a0814;padding:12px;border-radius:10px;border:1px solid #2a2150">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+<h4 style="color:#fff;font-size:13px">📋 BANNED LIST</h4>
+<div style="display:flex;gap:6px">
+<span id="banCount" style="font-size:10px;color:#ff7a7a;background:#1a1340;padding:4px 8px;border-radius:10px">0 Banned</span>
+<button onclick="playClick();clearAllBans()" id="clearBanBtn" style="display:none;padding:4px 8px;background:#ff0040;color:#fff;border:none;border-radius:6px;font-size:9px">CLEAR ALL</button>
+</div>
+</div>
+<div id="banList"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="scrimmage" class="section">
+<div class="page">
+<div class="admin-panel" id="adminPanel">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div id="whoLogged" style="font-size:12px;color:#fff"></div><button onclick="playClick();doLogout()" style="background:#000;color:#fff;border:1px solid #ff0040;padding:5px 12px;border-radius:10px;font-size:11px">LOGOUT</button></div>
+<div id="adminCreateRep" style="margin-top:15px;border-top:2px solid #ff0040;padding-top:12px">
+<h4 style="color:#ff7a7a;font-size:14px;font-weight:800">🔐 ADMIN - CREATE CLAN REP ACCOUNT</h4>
+<p style="font-size:11px;color:#c9b8ff;margin:6px 0">Only ADMINS can create personal accounts for clan representatives. You will provide the username and password to them.</p>
+<div style="background:#0a0814;padding:14px;border-radius:10px;border:2px solid #a855f7;margin-top:10px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div><label style="font-size:10px;color:#c9b8ff;font-weight:700">CLAN NAME</label><input id="newRepClan" placeholder="Ex: NEXUS" style="width:100%;padding:11px;background:#15122a;border:1px solid #a855f7;border-radius:8px;color:#fff;margin-top:4px"></div>
+<div><label style="font-size:10px;color:#c9b8ff;font-weight:700">USERNAME</label><input id="newRepUser" placeholder="Ex: NEXUS_REP" style="width:100%;padding:11px;background:#15122a;border:1px solid #a855f7;border-radius:8px;color:#fff;margin-top:4px"></div>
+</div>
+<div style="margin-top:10px"><label style="font-size:10px;color:#c9b8ff;font-weight:700">PASSWORD</label><input id="newRepPass" placeholder="Ex: Nexus123" style="width:100%;padding:11px;background:#15122a;border:1px solid #a855f7;border-radius:8px;color:#fff;margin-top:4px"></div>
+<button onclick="playClick();createRep()" style="width:100%;margin-top:12px;padding:13px;background:#00c851;color:#fff;border:none;border-radius:8px;font-weight:800;cursor:pointer">✅ CREATE REP ACCOUNT</button>
+</div>
+<div style="margin-top:14px"><h5 style="color:#fff;font-size:12px;font-weight:700">📋 LIST OF CLAN REP ACCOUNTS</h5><div id="repList" style="margin-top:8px;max-height:280px;overflow-y:auto"></div></div>
+</div>
+</div>
+<div id="publicScrimMsg" class="card" style="border:2px solid #a855f7;text-align:center;padding:30px"><h3 style="font-family:Cinzel;color:#fff">SCRIMMAGE SCHEDULE 8PM AND 10PM</h3><p style="font-size:11px;color:#9a8ac2;margin-top:10px">MON TO FRI - Login as Rep/Admin to view slots</p></div>
+<div id="scrimSlotsContainer" style="display:none">
+<div class="card" style="border:2px solid #a855f7"><div><h3>8PM SCRIM - 2 SLOTS</h3></div><div class="slot-row"><span class="slot-badge" style="background:#8b5cf6">SLOT 1</span><input id="reg8_1" class="reg-input"><button id="btn8_1" onclick="playClick();registerByComment('8PM',1)" style="display:none;padding:10px 16px;background:#00c851;color:#fff;border:none;border-radius:6px">REGISTER</button><button id="cancel8_1" onclick="playClick();cancelReg('8PM',1)" style="display:none;padding:9px 14px;background:#ff0040;color:#fff;border:none;border-radius:6px">CANCEL</button></div><div class="slot-row"><span class="slot-badge" style="background:#8b5cf6">SLOT 2</span><input id="reg8_2" class="reg-input"><button id="btn8_2" onclick="playClick();registerByComment('8PM',2)" style="display:none;padding:10px 16px;background:#00c851;color:#fff;border:none;border-radius:6px">REGISTER</button><button id="cancel8_2" onclick="playClick();cancelReg('8PM',2)" style="display:none;padding:9px 14px;background:#ff0040;color:#fff;border:none;border-radius:6px">CANCEL</button></div></div>
+<div class="card" style="border:2px solid #ff7a7a"><div><h3>10PM SCRIM - 3 SLOTS</h3></div><div class="slot-row"><span class="slot-badge" style="background:#ff7a7a">SLOT 1</span><input id="reg10_1" class="reg-input"><button id="btn10_1" onclick="playClick();registerByComment('10PM',1)" style="display:none;padding:9px 14px;background:#00c851;color:#fff;border:none;border-radius:6px">REGISTER</button><button id="cancel10_1" onclick="playClick();cancelReg('10PM',1)" style="display:none;padding:9px 14px;background:#ff0040;color:#fff;border:none;border-radius:6px">CANCEL</button></div><div class="slot-row"><span class="slot-badge" style="background:#ff7a7a">SLOT 2</span><input id="reg10_2" class="reg-input"><button id="btn10_2" onclick="playClick();registerByComment('10PM',2)" style="display:none;padding:9px 14px;background:#00c851;color:#fff;border:none;border-radius:6px">REGISTER</button><button id="cancel10_2" onclick="playClick();cancelReg('10PM',2)" style="display:none;padding:9px 14px;background:#ff0040;color:#fff;border:none;border-radius:6px">CANCEL</button></div><div class="slot-row"><span class="slot-badge" style="background:#ff7a7a">SLOT 3</span><input id="reg10_3" class="reg-input"><button id="btn10_3" onclick="playClick();registerByComment('10PM',3)" style="display:none;padding:9px 14px;background:#00c851;color:#fff;border:none;border-radius:6px">REGISTER</button><button id="cancel10_3" onclick="playClick();cancelReg('10PM',3)" style="display:none;padding:9px 14px;background:#ff0040;color:#fff;border:none;border-radius:6px">CANCEL</button></div></div>
+</div>
+<div class="card" id="adminRecordCard" style="display:none;border:2px solid #00ff88"><div><h3>📜 ADMIN RECORDS</h3><span id="recordCount" style="font-size:10px;color:#00ff88"></span></div><div style="display:flex;gap:8px;margin:12px 0"><button onclick="playClick();clearRecords()" style="padding:8px 14px;background:#ff0040;color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:700">🗑️ CLEAR ALL</button><button onclick="playClick();copyRecords()" style="padding:8px 14px;background:#15122a;color:#00ff88;border:1px solid #00ff88;border-radius:6px;font-size:11px;font-weight:700">📋 COPY</button></div><div id="recordList" style="max-height:350px;overflow-y:auto"></div></div>
+</div>
+</div>
+
+<script>
+let audioCtx=null;
+function playClick(){try{if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume(); let o=audioCtx.createOscillator(),g=audioCtx.createGain(); o.type='square'; o.frequency.setValueAtTime(600,audioCtx.currentTime); o.frequency.exponentialRampToValueAtTime(200,audioCtx.currentTime+0.1); g.gain.setValueAtTime(0.2,audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+0.1); o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+0.1);}catch(e){}}
+function handleTopBtn(){playClick(); let r=localStorage.getItem('sav_role'); if(r){if(confirm("Do you want to logout?")) doLogout();} else showPage('login');}
+let defaultAdmins=[{user:"ADMIN_1",pass:"Pogiako_1"},{user:"ADMIN_2",pass:"Pogiako_2"},{user:"ADMIN_3",pass:"Pogiako_3"}];
+let defaultReps=[{clan:"SAV",user:"SAV",pass:"SAV123"}];
+function getAdmins(){let s=localStorage.getItem('sav_admins'); if(s){let o=JSON.parse(s); if(!o.some(a=>a.user==="ADMIN_1")){localStorage.setItem('sav_admins',JSON.stringify(defaultAdmins)); return defaultAdmins;} return o;} localStorage.setItem('sav_admins',JSON.stringify(defaultAdmins)); return defaultAdmins;}
+function getReps(){let s=localStorage.getItem('sav_reps'); if(s) return JSON.parse(s); localStorage.setItem('sav_reps',JSON.stringify(defaultReps)); return defaultReps;}
+function doLogin(){let t=document.getElementById('loginType').value,u=document.getElementById('adminUser').value.trim().toUpperCase(),p=document.getElementById('adminPass').value.trim(),m=document.getElementById('loginMsg'); if(t==='admin'){let f=getAdmins().find(a=>a.user.toUpperCase()===u&&a.pass===p); if(f){localStorage.setItem('sav_role','admin'); localStorage.setItem('sav_user',f.user); localStorage.setItem('sav_clan','ADMIN'); m.innerHTML="✅ Admin Login Successful! "+f.user; setTimeout(()=>{showPage('scrimmage'); updateUI();},400);}else{m.innerHTML="❌ Invalid admin credentials!";}}else{let f=getReps().find(r=>r.user.toUpperCase()===u&&r.pass===p); if(f){localStorage.setItem('sav_role','rep'); localStorage.setItem('sav_user',f.user); localStorage.setItem('sav_clan',f.clan); m.innerHTML="✅ Welcome "+f.clan+" Representative!"; setTimeout(()=>{showPage('scrimmage'); updateUI();},400);}else{m.innerHTML="❌ Invalid Rep credentials! Contact admin.";}}}
+function doLogout(){localStorage.removeItem('sav_role'); localStorage.removeItem('sav_user'); localStorage.removeItem('sav_clan'); document.body.classList.remove('admin','rep'); document.getElementById('adminBtn').innerText="🔐 LOGIN"; let hb=document.getElementById('homeLoginBtn'); if(hb) hb.innerText="🔐 LOGIN"; showPage('home'); updateUI();}
+function updateUI(){
+let role=localStorage.getItem('sav_role'),clan=localStorage.getItem('sav_clan'),user=localStorage.getItem('sav_user');
+document.body.classList.remove('admin','rep');
+let pub=document.getElementById('publicScrimMsg'), slots=document.getElementById('scrimSlotsContainer'), recCard=document.getElementById('adminRecordCard'), btn=document.getElementById('adminBtn'), homeBtn=document.getElementById('homeLoginBtn');
+let panel=document.getElementById('adminPanel'); let createDiv=document.getElementById('adminCreateRep');
+let banForm=document.getElementById('banAdminForm'); let clearBanBtn=document.getElementById('clearBanBtn');
+if(role==='admin'){
+document.body.classList.add('admin');
+document.getElementById('whoLogged').innerHTML="🔴 ADMIN: <b style='color:#fff'>"+user+"</b> - You can create accounts for clan reps";
+panel.style.display="block"; createDiv.style.display="block";
+banForm.style.display="block"; clearBanBtn.style.display="block";
+btn.innerText="✅ "+user+" - LOGOUT"; if(homeBtn) homeBtn.innerText="✅ "+user+" - LOGOUT";
+pub.style.display="none"; slots.style.display="block"; recCard.style.display="block";
+}else if(role==='rep'){
+document.body.classList.add('rep');
+document.getElementById('whoLogged').innerHTML="🟢 REP: <b style='color:#fff'>"+clan+"</b> - Representative Account";
+panel.style.display="block"; createDiv.style.display="none";
+banForm.style.display="none"; clearBanBtn.style.display="none";
+btn.innerText="✅ "+clan+" REP - LOGOUT"; if(homeBtn) homeBtn.innerText="✅ "+clan+" - LOGOUT";
+pub.style.display="none"; slots.style.display="block"; recCard.style.display="none";
+}else{
+document.getElementById('whoLogged').innerHTML="🔒 Public View - Login as Rep to register";
+panel.style.display="none"; createDiv.style.display="none";
+banForm.style.display="none"; clearBanBtn.style.display="none";
+btn.innerText="🔐 LOGIN"; if(homeBtn) homeBtn.innerText="🔐 LOGIN";
+pub.style.display="block"; slots.style.display="none"; recCard.style.display="none";
+}
+renderReps(); renderSlots(); renderRecords(); renderBans();
+}
+
+// --- BAN SYSTEM ---
+function getBans(){let s=localStorage.getItem('sav_bans'); return s?JSON.parse(s):[];}
+function addBan(){
+if(localStorage.getItem('sav_role')!=='admin'){alert("Admin access only!"); return;}
+let clan=document.getElementById('banClan').value.trim().toUpperCase();
+let player=document.getElementById('banPlayer').value.trim().toUpperCase();
+let reason=document.getElementById('banReason').value.trim().toUpperCase()||"NO REASON PROVIDED";
+if(!clan||!player){alert("Please enter both Clan Name and Player Name!"); return;}
+let bans=getBans();
+if(bans.find(b=>b.clan===clan&&b.player===player)){alert("This player is already banned!"); return;}
+bans.unshift({clan,player,reason,date:new Date().toLocaleDateString(),time:new Date().toLocaleTimeString(),bannedBy:localStorage.getItem('sav_user')});
+localStorage.setItem('sav_bans',JSON.stringify(bans));
+document.getElementById('banClan').value=""; document.getElementById('banPlayer').value=""; document.getElementById('banReason').value="";
+renderBans();
+alert("🚫 BANNED! "+clan+" - "+player+" added to blacklist!");
+}
+function renderBans(){
+let bans=getBans(); let list=document.getElementById('banList'); let count=document.getElementById('banCount');
+let role=localStorage.getItem('sav_role');
+if(count) count.innerText=bans.length+" Banned";
+if(bans.length===0){list.innerHTML=`<div style="text-align:center;padding:25px;color:#6d6490"><div style="font-size:30px">✅</div><p style="font-size:12px;margin-top:8px">No banned players - Clean record</p><p style="font-size:10px">SAV community is safe and respectful</p></div>`; return;}
+let h="";
+bans.forEach((b,i)=>{
+h+=`<div style="background:#1a0810;padding:12px;border-radius:8px;border-left:4px solid #ff0040;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+<div style="flex:1">
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<b style="color:#ff7a7a;background:#2a0a0a;padding:3px 8px;border-radius:4px;font-size:11px">🚫 ${b.clan}</b>
+<b style="color:#fff;font-size:13px">${b.player}</b>
+</div>
+<div style="margin-top:6px">
+<span style="font-size:10px;color:#ffaa88">Reason: ${b.reason}</span><br>
+<span style="font-size:9px;color:#6d6490">Banned on ${b.date} ${b.time} | By ${b.bannedBy}</span>
+</div>
+</div>
+${role==='admin'?`<button onclick="playClick();if(confirm('Unban ${b.player} from ${b.clan}?')){let bans=getBans(); bans.splice(${i},1); localStorage.setItem('sav_bans',JSON.stringify(bans)); renderBans();}" style="background:#00c851;color:#fff;border:none;padding:6px 10px;border-radius:6px;font-size:9px;font-weight:700;margin-left:8px">UNBAN</button>`:''}
+</div>`;
+});
+list.innerHTML=h;
+}
+function clearAllBans(){if(localStorage.getItem('sav_role')!=='admin'){alert("Admin only!"); return;} if(!confirm("Clear ALL banned players? This will unban everyone!")) return; localStorage.removeItem('sav_bans'); renderBans();}
+
+function createRep(){let c=document.getElementById('newRepClan').value.trim().toUpperCase(),u=document.getElementById('newRepUser').value.trim().toUpperCase(),p=document.getElementById('newRepPass').value.trim(); if(!c||!u||!p){alert("Please fill all fields!"); return;} let reps=getReps(); if(reps.find(r=>r.user.toUpperCase()===u)){alert("Username "+u+" already exists!"); return;} reps.push({clan:c,user:u,pass:p,createdBy:localStorage.getItem('sav_user'),createdAt:new Date().toLocaleDateString()}); localStorage.setItem('sav_reps',JSON.stringify(reps)); document.getElementById('newRepClan').value=""; document.getElementById('newRepUser').value=""; document.getElementById('newRepPass').value=""; renderReps(); alert("✅ SUCCESS! "+c+" - "+u+" / "+p);}
+function renderReps(){let reps=getReps(),h=""; if(reps.length===0){document.getElementById('repList').innerHTML="<p style='color:#6d6490;text-align:center;padding:10px'>No Rep accounts yet</p>"; return;} reps.forEach(x=>{h+=`<div style="background:#0a0814;padding:10px;border-radius:8px;border:1px solid #2a2150;margin-bottom:6px;display:flex;justify-content:space-between"><div><b style="color:#00ff88">${x.clan}</b> - <b style="color:#fff">${x.user}</b><br><span style="font-size:10px;color:#9a8ac2">Pass: ${x.pass}</span></div><div><button onclick="playClick();if(confirm('Delete ${x.user}?')){let a=getReps().filter(z=>z.user!=='${x.user}');localStorage.setItem('sav_reps',JSON.stringify(a));renderReps();}" style="background:#ff0040;color:#fff;border:none;padding:5px 8px;border-radius:6px;font-size:9px">DELETE</button></div></div>`}); document.getElementById('repList').innerHTML=h;}
+function getSlots(){return{s8_1:JSON.parse(localStorage.getItem('sav_slot8_1')||'null'),s8_2:JSON.parse(localStorage.getItem('sav_slot8_2')||'null'),s10_1:JSON.parse(localStorage.getItem('sav_slot10_1')||'null'),s10_2:JSON.parse(localStorage.getItem('sav_slot10_2')||'null'),s10_3:JSON.parse(localStorage.getItem('sav_slot10_3')||'null')}}
+function renderSlots(){let s=getSlots(),role=localStorage.getItem('sav_role'),myClan=localStorage.getItem('sav_clan'); function draw(time,num,data){let inp=document.getElementById(`reg${time==='8PM'?'8':'10'}_${num}`),btn=document.getElementById(`btn${time==='8PM'?'8':'10'}_${num}`),can=document.getElementById(`cancel${time==='8PM'?'8':'10'}_${num}`); if(!inp) return; if(data){inp.value=`${data.clan} - ${data.comment}`; inp.disabled=true; inp.style.background="#1a1340"; btn.style.display="none"; let canCancel=role==='admin'||(role==='rep'&&data.clan===myClan); can.style.display=canCancel?"block":"none";}else{inp.value=""; inp.disabled=false; inp.placeholder=myClan?`${myClan} - Comment`:"Comment"; btn.style.display="block"; can.style.display="none";}} draw('8PM',1,s.s8_1); draw('8PM',2,s.s8_2); draw('10PM',1,s.s10_1); draw('10PM',2,s.s10_2); draw('10PM',3,s.s10_3);}
+function getRecords(){let s=localStorage.getItem('sav_records'); return s?JSON.parse(s):[];}
+function addRecord(action,slot,slotNum,clan,comment){let r=getRecords(),u=localStorage.getItem('sav_user')||"Unknown",now=new Date(); r.unshift({date:now.toLocaleDateString(),time:now.toLocaleTimeString(),action,slot,slotNum,clan,comment,user:u}); localStorage.setItem('sav_records',JSON.stringify(r)); renderRecords();}
+function renderRecords(){let role=localStorage.getItem('sav_role'); let card=document.getElementById('adminRecordCard'); if(role!=='admin'){if(card) card.style.display="none"; return;} if(card) card.style.display="block"; let rec=getRecords(); let list=document.getElementById('recordList'); let cnt=document.getElementById('recordCount'); if(cnt) cnt.innerText=rec.length+" total"; if(rec.length===0){list.innerHTML="<p style='color:#6d6490;text-align:center;padding:20px'>No records yet</p>"; return;} let h=""; rec.forEach(x=>{let isCancel=x.action==="CANCEL"; h+=`<div style="background:#0a0814;padding:10px;border-radius:8px;border-left:4px solid ${isCancel?'#ff0040':'#00ff88'};margin-bottom:8px"><b style="color:${isCancel?'#ff7a7a':'#00ff88'}">${x.action}</b> - <b style="color:#fff">${x.clan} - ${x.comment}</b><br><span style="font-size:10px;color:#9a8ac2">${x.slot} SLOT${x.slotNum} | ${x.date} ${x.time} | by ${x.user}</span></div>`}); list.innerHTML=h;}
+function clearRecords(){if(localStorage.getItem('sav_role')!=='admin'){alert("Admin only!"); return;} if(!confirm("Clear ALL records?")) return; localStorage.removeItem('sav_records'); renderRecords();}
+function copyRecords(){let rec=getRecords(); if(rec.length===0){alert("No records"); return;} let txt="SAV RECORDS\n"; rec.forEach((x,i)=>{txt+=`${i+1}. [${x.action}] ${x.clan} - ${x.comment} | ${x.slot} SLOT${x.slotNum} | ${x.date} ${x.time} | by ${x.user}\n`;}); navigator.clipboard.writeText(txt).then(()=>{alert("✅ Copied!");});}
+function registerByComment(time,num){let role=localStorage.getItem('sav_role'),myClan=localStorage.getItem('sav_clan'); if(!role){alert("Please login first!"); showPage('login'); return;} let inp=document.getElementById(`reg${time==='8PM'?'8':'10'}_${num}`),val=inp.value.trim().toUpperCase(); if(!val){alert("Please enter team comment!"); return;} let clan=myClan,comment=val; if(role==='admin'){let p=val.split(" "); if(p.length>=2){clan=p[0]; comment=p.slice(1).join(" ");}} let s=getSlots(),all=time==='8PM'?[s.s8_1,s.s8_2]:[s.s10_1,s.s10_2,s.s10_3]; let count=all.filter(x=>x&&x.clan===clan).length; if(count>=(time==='8PM'?2:3)){alert(clan+" has reached max slots!"); return;} localStorage.setItem(`sav_slot${time==='8PM'?'8':'10'}_${num}`, JSON.stringify({clan,comment})); addRecord("REGISTER",time,num,clan,comment); renderSlots();}
+function cancelReg(time,num){let role=localStorage.getItem('sav_role'),myClan=localStorage.getItem('sav_clan'); let s=getSlots(),data=time==='8PM'?(num===1?s.s8_1:s.s8_2):(num===1?s.s10_1:num===2?s.s10_2:s.s10_3); if(!data) return; if(role==='rep'&&data.clan!==myClan){alert("You cannot cancel another clan!"); return;} if(!confirm(`Cancel ${data.clan} - ${data.comment}?`)) return; addRecord("CANCEL",time,num,data.clan,data.comment); localStorage.removeItem(`sav_slot${time==='8PM'?'8':'10'}_${num}`); renderSlots();}
+function showPage(id){document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active')); let n=document.getElementById('nav-'+id); if(n) n.classList.add('active'); if(id==='blacklist'){renderBans();}}
+function checkAdmin(){if(localStorage.getItem('sav_role')){document.body.classList.add(localStorage.getItem('sav_role'));}}
+checkAdmin(); renderSlots(); updateUI(); renderBans();
+</script>
+</body>
+</html>
